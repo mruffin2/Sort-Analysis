@@ -1,0 +1,87 @@
+//Margie Ruffin
+//DS&A
+//bubble sort & quick sort anaylsis 
+// Quick Sort algorithm from https://www.geeksforgeeks.org/quick-sort/
+// Bubble Sort algorithm from https://www.geeksforgeeks.org/bubble-sort/
+
+//---------------------------------Bubble Sort-------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+//BASIC SWAP FUNCTION
+void swap(int *num1 ,int *num2)
+{
+    int temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+}
+
+//------------------------BUBBLE SORT FUNCTIONS------------------------------------------
+
+
+// A function to implement bubble sort
+void bubbleSort(int arr[], int n)
+{
+   int swapCount = 0; //counter for swaps
+   int compCount = 0; // counter for comparisons 
+   int i, j;
+   for (i = 0; i < n-1; i++)  
+   {
+       // Last i elements are already in place   
+       for (j = 0; j < n-i-1; j++) 
+       {
+           compCount ++;
+           if (arr[j] > arr[j+1])
+           {
+              swap(&arr[j], &arr[j+1]); // swap the two adjacent numbers
+              swapCount ++;
+           }
+       }
+   }
+    cout << "Number of swaps: " << endl;
+    cout << swapCount << endl;
+    
+    cout << "Number of comparisons: "<< endl;
+    cout << compCount << endl;
+}
+
+void printArray(int array[], int arraySize)
+{
+    int i;
+    for (i=0; i < arraySize; i++)
+    {
+        //printf("%d ", array[i]);
+        cout<< array[i] << ' ';
+    }
+    cout << endl;
+}
+
+int main()
+{
+    //two arrays 
+    int array1 [] = { 86, 85, 27, 64, 71, 95, 2, 5, 96, 30, 72, 52, 13, 34, 82, 57, 42, 81, 44, 9, 62, 83, 23, 3, 70, 98, 79, 14, 53, 81, 1, 8};
+    
+    //int array1 [] = {34, 22, 57, 96, 27, 64, 43, 10, 98, 100, 9, 43, 4, 32, 7, 59, 11, 89, 73, 79, 78, 14, 5, 24, 50, 6, 5, 65, 85, 38, 89, 94};
+    
+    
+    int array2[] = { 38, 96, 50, 41, 81, 47, 15, 19, 16, 10, 42, 11, 92, 37, 44, 58, 56, 71, 49, 61, 33, 7, 64, 86, 5, 25, 74, 67, 52, 28, 76, 39, 22, 97, 98, 27, 95, 23, 75, 14, 93, 43, 18, 55, 72, 31, 73, 40, 63, 6, 1, 35, 45, 17, 79, 13, 3, 84, 89, 59, 62, 65, 100, 32, 82, 48, 20, 88, 66, 78, 80, 29, 85, 12, 8, 68, 60, 26, 91, 54, 21, 57, 94, 70, 24, 4, 34, 83, 69, 9, 99, 51, 90, 87, 30, 53, 2, 36, 77, 46};
+
+
+    cout << " --------Bubble Sort-----------" << endl;
+    int n = sizeof(array1)/sizeof(array1[0]);
+    bubbleSort(array1, n);
+    cout <<"Sorted array: " << endl;
+    printArray(array1, n);
+    cout << endl;
+
+    
+    int n2 = sizeof(array2)/sizeof(array2[0]);
+    bubbleSort(array2, n2);
+    cout <<"Sorted array: " << endl;
+    printArray(array2, n2);
+    cout << endl;
+    cout << endl;
+    
+    return 0;
+}
